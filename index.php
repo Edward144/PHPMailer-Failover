@@ -1,11 +1,7 @@
 <?php
 
-use Html2Text\Html2Text;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
-require_once('vendor/autoload.php');
+require_once(dirname(__FILE__) . '/config.php');
+require_once(dirname(__FILE__) . '/mailer.php');
 
 $body = 
     '<p>Hi Test Name,</p>
