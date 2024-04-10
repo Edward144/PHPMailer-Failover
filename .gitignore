@@ -1,0 +1,5 @@
+config.php
+.htpasswd
+.htaccess
+vendor/
+node_modules/
