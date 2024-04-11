@@ -121,7 +121,7 @@ function sendmail($to = [], $subject, $body, $attachments = [], $from = null, $f
     }
 
     //Log the mail to a file if it could not be sent
-    if($failureStage === 2 || !empty($smtpDebug)) {
+    if($failureStage === 2 || ($failureStage > 1 && !empty($smtpDebug))) {
         try {
             $filename = 'smtp_failures_' . date('Ymd');
 
