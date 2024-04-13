@@ -3,8 +3,8 @@
     "description": "A PHP Mailer class that allows for multiple redundant SMTP services to be configured.",
     "type": "library",
     "require": {
-        "phpmailer/phpmailer": "dev-master",
-        "html2text/html2text": "dev-master"
+        "phpmailer/phpmailer": "^6.9",
+        "html2text/html2text": "^4.3"
     },
     "license": "MIT",
     "autoload": {
@@ -18,5 +18,5 @@
             "email": "ed@edhwebdesign.co.uk"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }
