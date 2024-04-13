@@ -155,22 +155,6 @@ class Mailer {
         return false;
     }
 
-    public function values() {
-        $values = [
-            'to' => $this->to,
-            'subject' => $this->subject,
-            'body' => $this->body,
-            'alt_body' => $this->altBody,
-            'from' => $this->from,
-            'from_friendly' => $this->fromFriendly,
-            'attachments' => $this->attachments
-        ];
-        
-        echo '<pre>';
-            print_r($values);
-        echo '</pre>';
-    }
-
     public function addTo($to, $friendly = null) {
         if(!is_array($to) && !empty($friendly)) {
             $this->to[$to] = $friendly; 
