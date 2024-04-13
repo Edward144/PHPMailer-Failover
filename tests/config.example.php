@@ -10,7 +10,7 @@ define('MAILER_FAILOVER_SMTP', [
         'encryption' => 'tls'
     ],
     'smtp_service_2' => [
-        'host' => '127.0.01',
+        'host' => '127.0.0.1',
         'port' => 1025,
         'username' => 'user2',
         'password' => 'pass',
