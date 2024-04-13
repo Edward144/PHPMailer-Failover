@@ -6,6 +6,8 @@ A PHPMailer class that allows for the configuration of multiple redundant SMTP s
 
 ### Installation
 
+This package is now on Packagist, so you can simply run `composer require edward144/php-mailer-failover`.
+
 Create a composer.json file or amend your existing one. Add this Github repository and require the latest version.
 
     {
