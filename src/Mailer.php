@@ -164,7 +164,7 @@ class Mailer {
                     $this->smtpDebug . "\n" . 
                     'To: ' . $this->debugTo . "\n" .
                     (!empty($debugCc) ? 'CC: ' . $this->debugCc . "\n ": '') .
-                    (!empty($debugCc) ? 'BCC: ' . $this->debugBcc . "\n ": '') .
+                    (!empty($debugBcc) ? 'BCC: ' . $this->debugBcc . "\n ": '') .
                     'From: ' . $this->fromFriendly . ' <' . $this->from . '>' . "\n" .
                     'Subject: ' . $this->subject . "\n" . 
                     (!empty($this->debugAttachments) ? 'Attachments: ' . $this->debugAttachments . "\n" : '') .
