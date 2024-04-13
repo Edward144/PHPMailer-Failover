@@ -9,6 +9,8 @@ use PHPMailer\PHPMailer\Exception;
 
 class Mailer {
     private $to = [];
+    private $cc = [];
+    private $bcc = [];
     private $subject;
     private $body;
     private $altBody;
@@ -19,6 +21,8 @@ class Mailer {
     private $failureStage = 0;
     private $smtpDebug = '';
     private $debugTo = '';
+    private $debugCc = '';
+    private $debugBcc = '';
     private $debugAttachments = '';
 
     public function __construct() {
@@ -57,6 +61,32 @@ class Mailer {
                 else {
                     $mail->AddAddress($key, $value);
                     $this->debugTo .= $value . ' <' . $key . '>; ';
+                }
+            }
+
+            if(!empty($this->cc)) {
+                foreach($this->cc as $key => $value) {
+                    if(is_numeric($key)) {
+                        $mail->AddCC($value);
+                        $this->debugCc .= $value . '; ';
+                    }
+                    else {
+                        $mail->AddCC($key, $value);
+                        $this->debugCc .= $value . ' <' . $key . '>; ';
+                    }
+                }
+            }
+
+            if(!empty($this->bcc)) {
+                foreach($this->bcc as $key => $value) {
+                    if(is_numeric($key)) {
+                        $mail->AddAddress($value);
+                        $this->debugBcc .= $value . '; ';
+                    }
+                    else {
+                        $mail->AddAddress($key, $value);
+                        $this->debugBcc .= $value . ' <' . $key . '>; ';
+                    }
                 }
             }
 
@@ -133,6 +163,8 @@ class Mailer {
                 fwrite($fp, 
                     $this->smtpDebug . "\n" . 
                     'To: ' . $this->debugTo . "\n" .
+                    (!empty($debugCc) ? 'CC: ' . $this->debugCc . "\n ": '') .
+                    (!empty($debugCc) ? 'BCC: ' . $this->debugBcc . "\n ": '') .
                     'From: ' . $this->fromFriendly . ' <' . $this->from . '>' . "\n" .
                     'Subject: ' . $this->subject . "\n" . 
                     (!empty($this->debugAttachments) ? 'Attachments: ' . $this->debugAttachments . "\n" : '') .
@@ -169,6 +201,44 @@ class Mailer {
                 }
                 else {
                     $this->to[] = $value;
+                }
+            }
+        }
+    }
+
+    public function addCC($cc, $friendly = null) {
+        if(!is_array($cc) && !empty($friendly)) {
+            $this->cc[$cc] = $friendly; 
+        }
+        elseif(!is_array($cc)) {
+            $this->cc[] = $cc;
+        }
+        else {
+            foreach($cc as $key => $value) {
+                if(!is_numeric($key)) {
+                    $this->cc[$key] = $value;
+                }
+                else {
+                    $this->cc[] = $value;
+                }
+            }
+        }
+    }
+
+    public function addBCC($bcc, $friendly = null) {
+        if(!is_array($bcc) && !empty($friendly)) {
+            $this->bcc[$bcc] = $friendly; 
+        }
+        elseif(!is_array($bcc)) {
+            $this->bcc[] = $bcc;
+        }
+        else {
+            foreach($bcc as $key => $value) {
+                if(!is_numeric($key)) {
+                    $this->bcc[$key] = $value;
+                }
+                else {
+                    $this->bcc[] = $value;
                 }
             }
         }
