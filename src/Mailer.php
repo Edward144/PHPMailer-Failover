@@ -163,8 +163,8 @@ class Mailer {
                 fwrite($fp, 
                     $this->smtpDebug . "\n" . 
                     'To: ' . $this->debugTo . "\n" .
-                    (!empty($debugCc) ? 'CC: ' . $this->debugCc . "\n ": '') .
-                    (!empty($debugBcc) ? 'BCC: ' . $this->debugBcc . "\n ": '') .
+                    (!empty($this->debugCc) ? 'CC: ' . $this->debugCc . "\n" : '') .
+                    (!empty($this->debugBcc) ? 'BCC: ' . $this->debugBcc . "\n" : '') .
                     'From: ' . $this->fromFriendly . ' <' . $this->from . '>' . "\n" .
                     'Subject: ' . $this->subject . "\n" . 
                     (!empty($this->debugAttachments) ? 'Attachments: ' . $this->debugAttachments . "\n" : '') .
