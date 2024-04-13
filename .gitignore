@@ -1,5 +1,5 @@
-config.php
-.htpasswd
 .htaccess
+.htpasswd
+tests/smtp_debug_logs/
+tests/config.php
 vendor/
-node_modules/
