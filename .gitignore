@@ -3,3 +3,4 @@
 tests/smtp_debug_logs/
 tests/config.php
 vendor/
+config.php
